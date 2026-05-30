@@ -1,0 +1,25 @@
+=============================================================================
+ GODOT_GAME_TOOLS - REANIMADO DESDE LAS CENIZAS
+ NovaCode Studio - CODESETS Archaeology Engine
+=============================================================================
+ Repositorio original: vini-guerrero/godot_game_tools
+ Ultimo commit original: 2022-08-01
+ Estado: ARQUEOLOGIA - RESCATADO
+ Fecha de restauracion: 2026-05-30
+
+ Este proyecto fue rescatado mediante el Protocolo de Arqueologia Git
+ de CODESETS. El codigo original de 2022 (con librerias obsoletas y
+ dependencias rotas) fue refactorizado al estandar NovaCode Studio 2026.
+
+ Cambios aplicados:
+   - 12 scripts .py refactorizados con header NovaCode
+   - Funcion novacode_save_output() inyectada para salida estandar
+   - Dependencias actualizadas (imp, urllib2, distutils corregidos)
+   - Indexado en novacode_media_vault.db (tag: restored_tool)
+   - ADN genetico almacenado en novacode_phoenix_matrix.db
+
+ REGLA ABSOLUTA CODESETS:
+   Todo repositorio rescatado se sube a Git con su nombre original
+   mas el sufijo "-2026-restored" para indicar que fue reanimado
+   y actualizado al estandar de 2026.
+=============================================================================

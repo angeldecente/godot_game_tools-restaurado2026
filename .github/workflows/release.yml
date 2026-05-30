@@ -1,0 +1,43 @@
+name: "Create Release"
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Artifact Version"
+        required: true
+        default: "2.x.x"
+      create_release:
+        description: "Create Release"
+        required: true
+        default: "true"
+
+env:
+  ARTIFACT_VERSION: ${{ github.event.inputs.version }}
+  CREATE_RELEASE: ${{ github.event.inputs.create_release }}
+
+jobs:
+  export:
+    name: "Create Release"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install Zip
+        uses: montudor/action-zip@v1
+      - name: Create Zip Artifact
+        run: zip -qq -r src.zip src && mkdir -p build && mv src build/src
+      - name: Generate Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: godot_game_tools_v${{ env.ARTIFACT_VERSION }}
+          path: build
+      - name: Upload Artifact to Release
+        if: ${{ env.CREATE_RELEASE == 'true' }}
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: ${{ github.workspace }}/src.zip
+          asset_name: godot_game_tools_v${{ env.ARTIFACT_VERSION }}.zip
+          tag: v${{ env.ARTIFACT_VERSION }}
+          body: v${{ env.ARTIFACT_VERSION }}.zip
+          overwrite: true
